@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Kayit">
+    <Key>
+      <PropertyRef Name="kayitId" />
+    </Key>
+    <Property Name="kayitId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayitKursId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayitOgrId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kurslar">
+    <Key>
+      <PropertyRef Name="kursId" />
+    </Key>
+    <Property Name="kursId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kursKodu" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="kursAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kursKredi" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ogrenci">
+    <Key>
+      <PropertyRef Name="ogrId" />
+    </Key>
+    <Property Name="ogrId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ogrNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ogrAdsoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ogrDogTarih" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Kayit_ToKurslar">
+    <End Role="Kurslar" Type="Self.Kurslar" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurslar">
+        <PropertyRef Name="kursId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitKursId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToOgrenci">
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ogrenci">
+        <PropertyRef Name="ogrId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitOgrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="Kayit" EntityType="Self.Kayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kurslar" EntityType="Self.Kurslar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Kayit_ToKurslar" Association="Self.FK_Kayit_ToKurslar">
+      <End Role="Kurslar" EntitySet="Kurslar" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToOgrenci" Association="Self.FK_Kayit_ToOgrenci">
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
+    <EntitySetMapping Name="Kayit">
+      <EntityTypeMapping TypeName="DBModel.Kayit">
+        <MappingFragment StoreEntitySet="Kayit">
+          <ScalarProperty Name="kayitId" ColumnName="kayitId" />
+          <ScalarProperty Name="kayitKursId" ColumnName="kayitKursId" />
+          <ScalarProperty Name="kayitOgrId" ColumnName="kayitOgrId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurslar">
+      <EntityTypeMapping TypeName="DBModel.Kurslar">
+        <MappingFragment StoreEntitySet="Kurslar">
+          <ScalarProperty Name="kursId" ColumnName="kursId" />
+          <ScalarProperty Name="kursKodu" ColumnName="kursKodu" />
+          <ScalarProperty Name="kursAdi" ColumnName="kursAdi" />
+          <ScalarProperty Name="kursKredi" ColumnName="kursKredi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ogrenci">
+      <EntityTypeMapping TypeName="DBModel.Ogrenci">
+        <MappingFragment StoreEntitySet="Ogrenci">
+          <ScalarProperty Name="ogrId" ColumnName="ogrId" />
+          <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+          <ScalarProperty Name="ogrAdsoyad" ColumnName="ogrAdsoyad" />
+          <ScalarProperty Name="ogrDogTarih" ColumnName="ogrDogTarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
